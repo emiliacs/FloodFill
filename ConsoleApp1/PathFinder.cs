@@ -93,7 +93,7 @@ namespace ConsoleApp1
                         if (location == null)
                         {
                             Console.WriteLine("Here is your path");
-                            Flood.PrintingWithWaiting(matrix);
+                            Printing.PrintingWithWaiting(matrix);
                             Console.WriteLine("Done!");
                             return;
                         }
