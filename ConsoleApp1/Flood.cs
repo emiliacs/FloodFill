@@ -7,7 +7,7 @@ namespace ConsoleApp1
 {
     class Flood
     {
-
+        //TODO: ei täytetä "suljettua" aluetta >;(
         public static void Waiting()
         {
             Console.WriteLine("Continue by pressing enter");
@@ -16,7 +16,36 @@ namespace ConsoleApp1
 
             Console.Clear();
         }
-      
+        public static void Printing(char[][] matrix)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("  X 1 2 3 4 5 6 7");
+            Console.Write("Y ");
+            int i = 1;
+            foreach (var row in matrix)
+            {
+                if (i == 1)
+                {
+                    Console.Write(i + " ");
+                }
+                else
+                {
+                    Console.Write("  " + i + " ");
+                }
+
+                foreach (var sign in row)
+                {
+
+                    Console.Write(sign + " ");
+                }
+
+                Console.Write("\n");
+
+                i++;
+
+            }
+            Console.WriteLine("");
+        }
         public static void PrintingWithWaiting(char[][] matrix)
         {
             Console.WriteLine("");
@@ -38,6 +67,7 @@ namespace ConsoleApp1
             }
             Console.WriteLine("");
         }
+
         public static void FloodSteps(int y, int x, char[][] matrix)
         {
             if (y >= 6)
@@ -83,10 +113,10 @@ namespace ConsoleApp1
                 matrix[esteetY][esteetX] = 'o';
             }
 
-            Printing.PrintingMatrix(matrix);
+            Printing(matrix);
 
             Console.WriteLine("\nFirst give a location where to start the flood.\n");
-            Console.Write("\nGive a first number between 1 and 7  axel to start the flood (Y axel) :  ");
+            Console.Write("\nGive a first number between 1 and 7  axel to start the flood ( Y :  ");
 
             y = int.Parse(Console.ReadLine()) - 1;
             while (y + 1 > 7 || y + 1 < 0)
@@ -95,7 +125,7 @@ namespace ConsoleApp1
                 y = int.Parse(Console.ReadLine()) - 1;
             }
 
-            Console.Write("\nGive a second number between 1 and 7 to start the flood (X axel) : ");
+            Console.Write("\nGive a second number between 1 and 7 to start the flood: ");
             x = int.Parse(Console.ReadLine()) - 1;
             while (x + 1 > 7 || x + 1 < 0)
             {
@@ -110,7 +140,7 @@ namespace ConsoleApp1
         }
         public static void Flooding(int y, int x, char[][] matrix)
         {
-            Printing.PrintingMatrix(matrix);
+            Printing(matrix);
             Waiting();
             List<int> locations = new List<int>();
             int i = 1;
@@ -145,7 +175,7 @@ namespace ConsoleApp1
                     FloodSteps(item, item, matrix);
 
                 }
-                Printing.PrintingMatrix(matrix);
+                Printing(matrix);
                 Waiting();
             }
 
